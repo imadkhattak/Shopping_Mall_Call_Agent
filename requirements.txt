@@ -2,3 +2,5 @@ groq
 load_dotenv
 langchain_community
 langchain_text_splitters
+pinecone
+mysql-connector-python

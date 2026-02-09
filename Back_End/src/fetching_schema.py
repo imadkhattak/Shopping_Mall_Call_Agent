@@ -1,26 +1,32 @@
 import re
-from pathlib import Path
 
 
 def fetching_schema():
+    with open("Data/Imad_database.sql", "r", encoding="utf-8") as f:
+        sql = f.read()
 
-    with open("Data/Imad_database.sql", "r") as f:
-        sql_content = f.read()
-
-
-    table_matches = re.findall(r"CREATE TABLE\s+`?(\w+)`?\s*\((.*?)\);", sql_text, re.DOTALL | re.IGNORECASE)
+    tables = re.findall(
+        r"CREATE TABLE\s+`?(\w+)`?\s*\(([\s\S]*?)\)\s*ENGINE",
+        sql,
+        re.IGNORECASE
+    )
 
     schema = {}
 
-    for table_name, columns_str in table_matches:
-        # Split columns by comma and clean
-        columns = [col.strip() for col in columns_str.split(",") if col.strip()]
+    for table_name, body in tables:
+        columns = []
+
+        for line in body.splitlines():
+            line = line.strip()
+
+            # valid column lines start with `
+            if line.startswith("`"):
+                col = line.split()[0].strip("`,")
+                columns.append(col)
+
         schema[table_name] = columns
 
-    # Print schema
-    for table, cols in schema.items():
-        print(f"Table: {table}")
-        for col in cols:
-            print(f"  - {col}")
+    return schema
 
-            
+
+
