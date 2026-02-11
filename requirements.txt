@@ -4,3 +4,5 @@ langchain_community
 langchain_text_splitters
 pinecone
 mysql-connector-python
+langchain
+langchain_groq

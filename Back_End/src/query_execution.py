@@ -22,7 +22,3 @@ def Execute_Query(user_query):
     return result
 
 
-if __name__ == "__main__":
-    user_query = "what is your mall name?"
-    result = Execute_Query(user_query)
-    print(result)
