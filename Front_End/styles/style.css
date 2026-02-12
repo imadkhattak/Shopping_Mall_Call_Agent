@@ -1,0 +1,239 @@
+:root {
+  --bg-color: #0d0605; /* Black/Dark Brown background */
+  --text-color: #ffffff;
+  --primary-color: #ff5722; /* Orange */
+  --secondary-color: #ff8a65;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background-image: radial-gradient(circle at 50% 0%, #2f1000 0%, #0d0605 60%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-style: italic;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: white;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.cta-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.badge {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #fff, #bbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #aaa;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+.talk-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 16px 48px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+  transition: all 0.3s ease;
+}
+
+.talk-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 87, 34, 0.5);
+}
+
+.talk-button i {
+  font-size: 20px;
+}
+
+/* Audio Visualizer / Status Indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 40px;
+  margin-top: 60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.status-indicator.active {
+  opacity: 1;
+}
+
+.bar {
+  width: 6px;
+  background-color: var(--primary-color);
+  height: 10%;
+  border-radius: 3px;
+  transition: height 0.1s;
+}
+
+.status-indicator.listening .bar {
+  animation: bounce 0.5s infinite ease-in-out alternate;
+}
+
+@keyframes bounce {
+  0% {
+    height: 10%;
+    opacity: 0.5;
+  }
+  100% {
+    height: 100%;
+    opacity: 1;
+  }
+}
+
+/* Add randomized delays for the bars to look like a waveform */
+.bar:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.bar:nth-child(4) {
+  animation-delay: 0.1s;
+}
+.bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.bar:nth-child(6) {
+  animation-delay: 0.2s;
+}
+.bar:nth-child(7) {
+  animation-delay: 0.1s;
+}
+.bar:nth-child(8) {
+  animation-delay: 0.3s;
+}
+.bar:nth-child(9) {
+  animation-delay: 0.2s;
+}
+.bar:nth-child(10) {
+  animation-delay: 0.1s;
+}
+
+.status-indicator.speaking .bar {
+  background-color: #4caf50;
+  animation-duration: 0.3s;
+}
+
+/* Bottom visualizer effect */
+.bottom-visualizer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: url("data:image/svg+xml;utf8,<svg ...>") no-repeat center bottom;
+  /* In a real scenario we'd use an image or canvas */
+  opacity: 0.5;
+}

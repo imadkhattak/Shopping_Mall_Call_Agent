@@ -1,10 +1,15 @@
+from openai import OpenAI
+from src.config import openai_api_key
 from .agent_executor import agent_executor
+
+client = OpenAI(api_key=openai_api_key)
+
 
 if __name__ == "__main__":
     response = agent_executor.invoke(
         {
             "messages": [
-                {"role": "user", "content": "What is the price of washing machine?"}
+                {"role": "user", "content": "Can you give me the contact information of the mall?"}
             ]
         }
     )

@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key = os.getenv("GROQ_API_KEY")
-gemini_embedding_key = os.getenv("GEMINI_EMBEDDING_KEY")
 pinecone_api_key = os.getenv("PINE_CONE_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 pinecone_index_name = os.getenv("PINE_CONE_INDEX_NAME")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 host = os.getenv("DB_HOST")
 port = os.getenv("DB_PORT")

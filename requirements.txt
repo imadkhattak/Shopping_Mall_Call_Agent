@@ -6,3 +6,4 @@ pinecone
 mysql-connector-python
 langchain
 langchain_groq
+langchain_openai

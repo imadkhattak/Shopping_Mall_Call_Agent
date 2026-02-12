@@ -1,7 +1,7 @@
-from .config import api_key
-from langchain_groq import ChatGroq
+from .config import openai_api_key
+from langchain_openai import ChatOpenAI
 
-llm = ChatGroq(
-    api_key=api_key,
-    model="llama-3.3-70b-versatile"
+llm = ChatOpenAI(
+    api_key=openai_api_key,
+    model="gpt-4o-mini"   # or "gpt-4o"
 )
