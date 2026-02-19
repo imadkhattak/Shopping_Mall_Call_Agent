@@ -6,7 +6,7 @@ client = OpenAI(api_key=openai_api_key)
 def tts(text):
     response = client.audio.speech.create(
         model="tts-1-hd",
-        voice="alloy_female",
+        voice="nova",
         input=text,
     )
     with open("audio.mp3", "wb") as f:
