@@ -1,5 +1,6 @@
+# tools.py
+
 from .config import *
-from .prompts import SQL_Prompt
 from langchain.tools import tool
 from pinecone import Pinecone
 from groq import Groq  # your LLM client
@@ -22,7 +23,7 @@ groq = Groq(api_key=groq_api_key)
 
 
 @tool
-def sql_query_generator(user_query: str) -> str:
+def schema_retriever(user_query: str) -> str:
     """Retrieve relevant database schema information for the given user query."""
 
     query_embedding = pc.inference.embed(
@@ -33,7 +34,7 @@ def sql_query_generator(user_query: str) -> str:
 
     results = index.query(
         vector=query_embedding,
-        top_k=5,
+        top_k=20,
         include_metadata=True
     )
 
