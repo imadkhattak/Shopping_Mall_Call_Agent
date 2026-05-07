@@ -9,3 +9,7 @@ langchain_groq
 langchain_openai
 elevenlabs
 fastapi
+uvicorn
+jinja2
+python-multipart
+google-generativeai

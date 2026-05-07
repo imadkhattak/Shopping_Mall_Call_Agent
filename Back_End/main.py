@@ -32,7 +32,7 @@ async def read_root(request: Request):
     """
     Serve the frontend page
     """
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html")
 
 @app.post("/start_conversation")
 async def start_conversation():
